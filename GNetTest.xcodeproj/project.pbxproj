@@ -16,6 +16,9 @@
 		F19E00C5274E7BA600A03A83 /* GNetTestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19E00C4274E7BA600A03A83 /* GNetTestTests.swift */; };
 		F19E00CF274E7BA700A03A83 /* GNetTestUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19E00CE274E7BA700A03A83 /* GNetTestUITests.swift */; };
 		F19E00D1274E7BA700A03A83 /* GNetTestUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19E00D0274E7BA700A03A83 /* GNetTestUITestsLaunchTests.swift */; };
+		F19E00E2274EDC7600A03A83 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19E00E1274EDC7600A03A83 /* Constants.swift */; };
+		F19E00E6274EDCCA00A03A83 /* MoviesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19E00E5274EDCCA00A03A83 /* MoviesModel.swift */; };
+		F19E00E8274EECED00A03A83 /* MoviesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19E00E7274EECED00A03A83 /* MoviesManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +52,9 @@
 		F19E00CA274E7BA700A03A83 /* GNetTestUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GNetTestUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F19E00CE274E7BA700A03A83 /* GNetTestUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GNetTestUITests.swift; sourceTree = "<group>"; };
 		F19E00D0274E7BA700A03A83 /* GNetTestUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GNetTestUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		F19E00E1274EDC7600A03A83 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		F19E00E5274EDCCA00A03A83 /* MoviesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesModel.swift; sourceTree = "<group>"; };
+		F19E00E7274EECED00A03A83 /* MoviesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,13 +105,16 @@
 		F19E00A9274E7BA400A03A83 /* GNetTest */ = {
 			isa = PBXGroup;
 			children = (
+				F19E00E4274EDCA000A03A83 /* Models */,
+				F19E00E3274EDC9600A03A83 /* Networking */,
+				F19E00E0274EDC5E00A03A83 /* Helpers */,
 				F19E00AA274E7BA400A03A83 /* AppDelegate.swift */,
 				F19E00AC274E7BA400A03A83 /* SceneDelegate.swift */,
-				F19E00AE274E7BA400A03A83 /* MainViewController.swift */,
+				F19E00DD274EDBBA00A03A83 /* Controllers */,
 				F19E00B6274E7BA600A03A83 /* Assets.xcassets */,
-				F19E00B8274E7BA600A03A83 /* LaunchScreen.storyboard */,
+				F19E00DF274EDC4A00A03A83 /* Views */,
 				F19E00BB274E7BA600A03A83 /* Info.plist */,
-				F19E00B3274E7BA400A03A83 /* GNetTest.xcdatamodeld */,
+				F19E00DE274EDC3A00A03A83 /* DB */,
 			);
 			path = GNetTest;
 			sourceTree = "<group>";
@@ -125,6 +134,54 @@
 				F19E00D0274E7BA700A03A83 /* GNetTestUITestsLaunchTests.swift */,
 			);
 			path = GNetTestUITests;
+			sourceTree = "<group>";
+		};
+		F19E00DD274EDBBA00A03A83 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				F19E00AE274E7BA400A03A83 /* MainViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		F19E00DE274EDC3A00A03A83 /* DB */ = {
+			isa = PBXGroup;
+			children = (
+				F19E00B3274E7BA400A03A83 /* GNetTest.xcdatamodeld */,
+			);
+			path = DB;
+			sourceTree = "<group>";
+		};
+		F19E00DF274EDC4A00A03A83 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F19E00B8274E7BA600A03A83 /* LaunchScreen.storyboard */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		F19E00E0274EDC5E00A03A83 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				F19E00E1274EDC7600A03A83 /* Constants.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		F19E00E3274EDC9600A03A83 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				F19E00E7274EECED00A03A83 /* MoviesManager.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		F19E00E4274EDCA000A03A83 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F19E00E5274EDCCA00A03A83 /* MoviesModel.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -257,10 +314,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F19E00E2274EDC7600A03A83 /* Constants.swift in Sources */,
 				F19E00AF274E7BA400A03A83 /* MainViewController.swift in Sources */,
+				F19E00E6274EDCCA00A03A83 /* MoviesModel.swift in Sources */,
 				F19E00AB274E7BA400A03A83 /* AppDelegate.swift in Sources */,
 				F19E00AD274E7BA400A03A83 /* SceneDelegate.swift in Sources */,
 				F19E00B5274E7BA400A03A83 /* GNetTest.xcdatamodeld in Sources */,
+				F19E00E8274EECED00A03A83 /* MoviesManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
