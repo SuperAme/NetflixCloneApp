@@ -7,14 +7,21 @@
 
 import Foundation
 
-struct MoviesModel: Codable {
+struct MoviesModel: Decodable {
     let results: [Results]
 }
 
-struct Results: Codable {
-    let poster_path: String?
+struct Results: Decodable {
+    
+    enum CodingKeys: String, CodingKey {
+        case poster = "poster_path"
+        case releaseDate = "release_date"
+        case title = "title"
+        case overview = "oveerview"
+    }
+    
+    let poster: String?
     let title: String?
-    let release_date: String?
+    let releaseDate: String?
     let overview: String?
-    let vote_average: Float?
 }

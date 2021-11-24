@@ -10,7 +10,7 @@ import UIKit
 class MainViewController: UIViewController {
     
     let favoriteMovies = MoviesManager()
-    var favoriteMoviesData = [String]()
+    var favoriteMoviesData = [[String]]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,7 +21,7 @@ class MainViewController: UIViewController {
     func getMoviesData() {
         favoriteMovies.parseFavoriteMoviesJson { (data) in
             for i in data.results {
-                self.favoriteMoviesData.append(i.title ?? "No title")
+                self.favoriteMoviesData.append([i.title ?? "No title", i.overview ?? "No title", i.poster ?? "No poster", i.releaseDate ?? "No release Date"])
             }
             print(self.favoriteMoviesData)
         }
