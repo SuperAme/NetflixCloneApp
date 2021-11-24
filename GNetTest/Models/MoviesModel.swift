@@ -17,11 +17,15 @@ struct Results: Decodable {
         case poster = "poster_path"
         case releaseDate = "release_date"
         case title = "title"
-        case overview = "oveerview"
+        case overview = "overview"
+        case tvShowTitle = "original_name"
+        case firstAirDate = "first_air_date"
     }
     
     let poster: String?
     let title: String?
     let releaseDate: String?
     let overview: String?
+    let tvShowTitle: String?
+    let firstAirDate: String?
 }
