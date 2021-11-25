@@ -25,7 +25,8 @@ class CollectionTableViewCell: UITableViewCell {
         layout.itemSize = CGSize(width: 140, height: 200)
         layout.scrollDirection = .horizontal
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cell")
+        let nib = UINib(nibName: MovieCollectionViewCell.identifier, bundle: nil)
+        collectionView.register(nib, forCellWithReuseIdentifier: MovieCollectionViewCell.identifier)
         return collectionView
     }()
     
@@ -50,13 +51,20 @@ class CollectionTableViewCell: UITableViewCell {
 
 extension CollectionTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
-        cell.backgroundColor = .blue
+        
+//        guard let cell = tableView.dequeueReusableCell(withIdentifier: CollectionTableViewCell.identifier, for: indexPath) as? CollectionTableViewCell else {
+//            return UITableViewCell()
+//        }
+//
+//        return cell
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MovieCollectionViewCell.identifier, for: indexPath) as? MovieCollectionViewCell else {
+            return UICollectionViewCell()
+        }
+        cell.titleLabel.text = "titulo"
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print(data[section].count)
         return data[section].count
     }
 }

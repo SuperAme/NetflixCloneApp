@@ -7,14 +7,14 @@
 
 import Foundation
 
-enum MovieCategory: String, CaseIterable {
-    case favorites = "Favorites"
-    case rated = "Rated"
-    case recommendated = "Recommendated"
-}
-
-struct MovieData {
-    let index: Int
+struct Movie {
     let name: String
-    let category: MovieCategory
+    let date: String
+    let image: String
+    
+    init(name: String, date: String, image: String) {
+        self.name = name
+        self.date = date
+        self.image = image
+    }
 }

@@ -24,9 +24,10 @@ class MovieCollectionViewCell: UICollectionViewCell {
         // Initialization code
     }
     
-    public func configure(with model: Model) {
-        self.titleLabel.text = model.title
-        self.dateLabel.text = model.date
+    public func showMovie(with movie: Movie?) {
+        self.titleLabel.text = movie?.name
+        self.dateLabel.text = movie?.date
+        
     }
 
 }
