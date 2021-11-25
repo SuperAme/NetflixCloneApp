@@ -24,6 +24,10 @@
 		F19E00EF274F090B00A03A83 /* HeaderCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19E00EE274F090B00A03A83 /* HeaderCollectionView.swift */; };
 		F19E00F5274F188400A03A83 /* MovieCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19E00F4274F188400A03A83 /* MovieCollectionCell.swift */; };
 		F19E00FF274F4F5700A03A83 /* MovieViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19E00FE274F4F5700A03A83 /* MovieViewCell.swift */; };
+		F19E0102274FD78600A03A83 /* CollectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19E0100274FD78600A03A83 /* CollectionTableViewCell.swift */; };
+		F19E0103274FD78600A03A83 /* CollectionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F19E0101274FD78600A03A83 /* CollectionTableViewCell.xib */; };
+		F19E0106274FD89800A03A83 /* MovieCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19E0104274FD89800A03A83 /* MovieCollectionViewCell.swift */; };
+		F19E0107274FD89800A03A83 /* MovieCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F19E0105274FD89800A03A83 /* MovieCollectionViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +69,10 @@
 		F19E00EE274F090B00A03A83 /* HeaderCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderCollectionView.swift; sourceTree = "<group>"; };
 		F19E00F4274F188400A03A83 /* MovieCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCollectionCell.swift; sourceTree = "<group>"; };
 		F19E00FE274F4F5700A03A83 /* MovieViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieViewCell.swift; sourceTree = "<group>"; };
+		F19E0100274FD78600A03A83 /* CollectionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionTableViewCell.swift; sourceTree = "<group>"; };
+		F19E0101274FD78600A03A83 /* CollectionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CollectionTableViewCell.xib; sourceTree = "<group>"; };
+		F19E0104274FD89800A03A83 /* MovieCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCollectionViewCell.swift; sourceTree = "<group>"; };
+		F19E0105274FD89800A03A83 /* MovieCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovieCollectionViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -170,6 +178,10 @@
 				F19E00EE274F090B00A03A83 /* HeaderCollectionView.swift */,
 				F19E00F4274F188400A03A83 /* MovieCollectionCell.swift */,
 				F19E00FE274F4F5700A03A83 /* MovieViewCell.swift */,
+				F19E0100274FD78600A03A83 /* CollectionTableViewCell.swift */,
+				F19E0101274FD78600A03A83 /* CollectionTableViewCell.xib */,
+				F19E0104274FD89800A03A83 /* MovieCollectionViewCell.swift */,
+				F19E0105274FD89800A03A83 /* MovieCollectionViewCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -312,7 +324,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				F19E00BA274E7BA600A03A83 /* LaunchScreen.storyboard in Resources */,
+				F19E0103274FD78600A03A83 /* CollectionTableViewCell.xib in Resources */,
 				F19E00B7274E7BA600A03A83 /* Assets.xcassets in Resources */,
+				F19E0107274FD89800A03A83 /* MovieCollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -348,6 +362,8 @@
 				F19E00AD274E7BA400A03A83 /* SceneDelegate.swift in Sources */,
 				F19E00B5274E7BA400A03A83 /* GNetTest.xcdatamodeld in Sources */,
 				F19E00E8274EECED00A03A83 /* MoviesManager.swift in Sources */,
+				F19E0106274FD89800A03A83 /* MovieCollectionViewCell.swift in Sources */,
+				F19E0102274FD78600A03A83 /* CollectionTableViewCell.swift in Sources */,
 				F19E00EF274F090B00A03A83 /* HeaderCollectionView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

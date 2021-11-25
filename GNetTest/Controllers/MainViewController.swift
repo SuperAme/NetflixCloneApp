@@ -9,6 +9,16 @@ import UIKit
 
 class MainViewController: UIViewController {
     
+    let data = [
+        ["mercedez","bmw","Nissan","Volksvawen"],
+        ["dog","cat"],
+        ["strawberry","lemon","orange"],
+        ["mercedez","bmw","Nissan","Volksvawen"],
+        ["dog","cat"],
+        ["strawberry","lemon","orange"]
+    ]
+        
+    
     let favoriteMovies = MoviesManager()
     
     var favoriteMoviesData = [[String]]()
@@ -18,16 +28,6 @@ class MainViewController: UIViewController {
     var recommendatedTvShowsData = [[String]]()
     var ratedTvShowsData = [[String]]()
     
-    let collectionView: UICollectionView = {
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .horizontal
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.register(MovieViewCell.self, forCellWithReuseIdentifier: "cell")
-        collectionView.register(HeaderCollectionView.self,forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: HeaderCollectionView.identifier)
-        return collectionView
-    }()
-    
     let titleLabel: UILabel = {
         let label = UILabel()
         label.text = "Custom"
@@ -36,22 +36,34 @@ class MainViewController: UIViewController {
         return label
     }()
     
+    let homeTableView: UITableView = {
+        let tableView = UITableView(frame: .zero, style: .grouped)
+        tableView.register(CollectionTableViewCell.self, forCellReuseIdentifier: CollectionTableViewCell.identifier)
+        return tableView
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        view.addSubview(collectionView)
-        view.addSubview(titleLabel)
-        collectionView.backgroundColor = .white
-        titleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 0).isActive = true
-        titleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10).isActive = true
-        titleLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 10).isActive = true
-        collectionView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 10).isActive = true
-        collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40).isActive = true
-        collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40).isActive = true
-        collectionView.heightAnchor.constraint(equalTo: collectionView.widthAnchor, multiplier: 1).isActive = true
+        homeTableView.delegate = self
+        homeTableView.dataSource = self
+        setup()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        homeTableView.frame = view.bounds
+    }
+    
+    func setup() {
+        view.addSubview(homeTableView)
         
-        collectionView.delegate = self
-        collectionView.dataSource = self
+        NSLayoutConstraint.activate([
+            homeTableView.topAnchor.constraint(equalTo: view.topAnchor),
+            homeTableView.leftAnchor.constraint(equalTo: view.leftAnchor),
+            homeTableView.rightAnchor.constraint(equalTo: view.rightAnchor),
+            homeTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ])
     }
     
     func getMoviesData() {
@@ -99,34 +111,57 @@ class MainViewController: UIViewController {
         
         
     }
+    
 
 
 }
 
-extension MainViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.frame.width/1.5, height: collectionView.frame.width+35)
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return data.count
     }
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! MovieViewCell
-        cell.titleLabel.text = "Mi titulo"
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: CollectionTableViewCell.identifier, for: indexPath) as? CollectionTableViewCell else {
+            return UITableViewCell()
+        }
+        
         return cell
     }
     
-//    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-//        let header = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: HeaderCollectionView.identifier, for: indexPath) as! HeaderCollectionView
-//        header.configure()
-//        return header
-//    }
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-//        return CGSize(width: view.frame.size.width, height: 50)
-//    }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 200
+    }
     
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 40
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        let sectionName: String
+        switch (section) {
+        case 0:
+            sectionName = "Favorite Movies"
+        case 1:
+            sectionName = "Recommendates Movies"
+        case 2:
+            sectionName = "Rated Movies"
+        case 3:
+            sectionName = "Favorite TV Shows"
+        case 4:
+            sectionName = "Recommendates TV Shows"
+        case 5:
+            sectionName = "Rated TV Shows"
+        default:
+            sectionName = "Unknow Category"
+        }
+        return sectionName
+    }
 }
+
 
