@@ -57,7 +57,7 @@ extension RecommendatedTableViewCell: UICollectionViewDelegate, UICollectionView
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MovieCollectionViewCell.identifier, for: indexPath) as? MovieCollectionViewCell else {
             return UICollectionViewCell()
         }
-        cell.titleLabel.text = recommendatedMoviesData[indexPath.row][1]
+        cell.titleLabel.text = recommendatedMoviesData[indexPath.row][0]
         cell.dateLabel.text = recommendatedMoviesData[indexPath.row][3]
         if let url = URL(string: "\(Constants.imageURL)\(recommendatedMoviesData[indexPath.row][2])" ?? "") {
             

@@ -32,7 +32,7 @@ class RatedTvShowTableViewCell: UITableViewCell {
         collectionView.dataSource = self
         favoriteMovies.parseRatedTvShowsJson { (data) in
             for i in data.results {
-                self.ratedTvShowsData.append([i.title ?? "No title", i.overview ?? "No overview", i.poster ?? "No poster", i.firstAirDate ?? "No release Date"])
+                self.ratedTvShowsData.append([i.tvShowTitle ?? "No title", i.overview ?? "No overview", i.poster ?? "No poster", i.firstAirDate ?? "No release Date"])
             }
             DispatchQueue.main.async {
                 self.collectionView.reloadData()
@@ -56,7 +56,7 @@ extension RatedTvShowTableViewCell: UICollectionViewDelegate, UICollectionViewDa
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MovieCollectionViewCell.identifier, for: indexPath) as? MovieCollectionViewCell else {
             return UICollectionViewCell()
         }
-        cell.titleLabel.text = ratedTvShowsData[indexPath.row][1]
+        cell.titleLabel.text = ratedTvShowsData[indexPath.row][0]
         cell.dateLabel.text = ratedTvShowsData[indexPath.row][3]
         if let url = URL(string: "\(Constants.imageURL)\(ratedTvShowsData[indexPath.row][2])" ?? "") {
             

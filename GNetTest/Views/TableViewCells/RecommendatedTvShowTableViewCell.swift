@@ -32,7 +32,7 @@ class RecommendatedTvShowTableViewCell: UITableViewCell {
         collectionView.dataSource = self
         favoriteMovies.parseRecommendatedTvShowsJson { (data) in
             for i in data.results {
-                self.recommendatedTvShowsData.append([i.title ?? "No title", i.overview ?? "No overview", i.poster ?? "No poster", i.firstAirDate ?? "No release Date"])
+                self.recommendatedTvShowsData.append([i.tvShowTitle ?? "No title", i.overview ?? "No overview", i.poster ?? "No poster", i.firstAirDate ?? "No release Date"])
             }
             DispatchQueue.main.async {
                 self.collectionView.reloadData()
@@ -57,7 +57,7 @@ extension RecommendatedTvShowTableViewCell: UICollectionViewDelegate, UICollecti
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MovieCollectionViewCell.identifier, for: indexPath) as? MovieCollectionViewCell else {
             return UICollectionViewCell()
         }
-        cell.titleLabel.text = recommendatedTvShowsData[indexPath.row][1]
+        cell.titleLabel.text = recommendatedTvShowsData[indexPath.row][0]
         cell.dateLabel.text = recommendatedTvShowsData[indexPath.row][3]
         if let url = URL(string: "\(Constants.imageURL)\(recommendatedTvShowsData[indexPath.row][2])" ?? "") {
             
