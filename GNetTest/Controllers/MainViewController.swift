@@ -9,8 +9,6 @@ import UIKit
 
 class MainViewController: UIViewController {
     
-    var favoriteMoviesData = [[String]]()
-    var recommendatedMoviesData = [[String]]()
     var ratedMoviesData = [[String]]()
     var favoriteTvShowsData = [[String]]()
     var recommendatedTvShowsData = [[String]]()
@@ -60,20 +58,6 @@ class MainViewController: UIViewController {
     
     func getMoviesData() {
         
-         favoriteMovies.parseFavoriteMoviesJson { (data) in
-            for i in data.results {
-                self.favoriteMoviesData.append([i.title ?? "No title", i.overview ?? "No title", i.poster ?? "No poster", i.releaseDate ?? "No release Date"])
-            }
-             
-        }
-        
-        
-//        favoriteMovies.parseRecommendatedMoviesJson { (data) in
-//            for i in data.results {
-//                recommendatedMoviesData.append([i.title ?? "No title", i.overview ?? "No overview", i.poster ?? "No poster", i.releaseDate ?? "No release Date"])
-//            }
-//            print(self.recommendatedMoviesData)
-//        }
 //
 //        favoriteMovies.parseRatedMoviesJson { (data) in
 //            for i in data.results {

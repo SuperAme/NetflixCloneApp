@@ -7,16 +7,16 @@
 
 import UIKit
 
-class MovieCollectionViewCell: UICollectionViewCell {
+class RecommendatedMovieCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var dateLabel: UILabel!
     @IBOutlet var movieImage: UIImageView!
     
-    static let identifier = "MovieCollectionViewCell"
+    static let identifier = "RecommendatedMovieCollectionViewCell"
     
     static func nib() -> UINib {
-        return UINib(nibName: "MovieCollectionViewCell", bundle: nil)
+        return UINib(nibName: "RecommendatedMovieCollectionViewCell", bundle: nil)
     }
 
     override func awakeFromNib() {

@@ -1,5 +1,5 @@
 //
-//  CollectionTableViewCell.swift
+//  RecommendatedTableViewCell.swift
 //  GNetTest
 //
 //  Created by Americo Meneses Quintero on 25/11/21.
@@ -9,15 +9,18 @@ import UIKit
 
 class RecommendatedTableViewCell: UITableViewCell {
     
-    static let identifier = "CollectionTableViewCell"
+    let favoriteMovies = MoviesManager()
+    var recommendatedMoviesData = [[String]]()
+    
+    static let identifier = "RecommendatedTableViewCell"
     
     private let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSize(width: 140, height: 200)
+        layout.itemSize = CGSize(width: 140, height: 300)
         layout.scrollDirection = .horizontal
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        let nib = UINib(nibName: MovieCollectionViewCell.identifier, bundle: nil)
-        collectionView.register(nib, forCellWithReuseIdentifier: MovieCollectionViewCell.identifier)
+        let nib = UINib(nibName: RecommendatedMovieCollectionViewCell.identifier, bundle: nil)
+        collectionView.register(nib, forCellWithReuseIdentifier: RecommendatedMovieCollectionViewCell.identifier)
         return collectionView
     }()
     
@@ -27,6 +30,14 @@ class RecommendatedTableViewCell: UITableViewCell {
         contentView.addSubview(collectionView)
         collectionView.delegate = self
         collectionView.dataSource = self
+        favoriteMovies.parseRecommendatedMoviesJson { (data) in
+            for i in data.results {
+                self.recommendatedMoviesData.append([i.title ?? "No title", i.overview ?? "No overview", i.poster ?? "No poster", i.releaseDate ?? "No release Date"])
+            }
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+            }
+        }
     }
     
     required init?(coder: NSCoder) {
@@ -43,15 +54,24 @@ class RecommendatedTableViewCell: UITableViewCell {
 extension RecommendatedTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MovieCollectionViewCell.identifier, for: indexPath) as? MovieCollectionViewCell else {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RecommendatedMovieCollectionViewCell.identifier, for: indexPath) as? RecommendatedMovieCollectionViewCell else {
             return UICollectionViewCell()
         }
-        cell.titleLabel.text = "titulo"
+        cell.titleLabel.text = recommendatedMoviesData[indexPath.row][1]
+        cell.dateLabel.text = recommendatedMoviesData[indexPath.row][3]
+        if let url = URL(string: "\(Constants.imageURL)\(recommendatedMoviesData[indexPath.row][2])" ?? "") {
+            
+            if let data = try? Data(contentsOf: url) {
+                DispatchQueue.main.async {
+                    cell.movieImage.image = UIImage(data: data)
+                }
+            }
+        }
         return cell
         
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
+        return recommendatedMoviesData.count
     }
 }

@@ -31,8 +31,8 @@
 		F19E00FF274F4F5700A03A83 /* MovieViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19E00FE274F4F5700A03A83 /* MovieViewCell.swift */; };
 		F19E0102274FD78600A03A83 /* RecommendatedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19E0100274FD78600A03A83 /* RecommendatedTableViewCell.swift */; };
 		F19E0103274FD78600A03A83 /* RecommendatedTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F19E0101274FD78600A03A83 /* RecommendatedTableViewCell.xib */; };
-		F19E0106274FD89800A03A83 /* MovieCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19E0104274FD89800A03A83 /* MovieCollectionViewCell.swift */; };
-		F19E0107274FD89800A03A83 /* MovieCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F19E0105274FD89800A03A83 /* MovieCollectionViewCell.xib */; };
+		F19E0106274FD89800A03A83 /* RecommendatedMovieCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19E0104274FD89800A03A83 /* RecommendatedMovieCollectionViewCell.swift */; };
+		F19E0107274FD89800A03A83 /* RecommendatedMovieCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F19E0105274FD89800A03A83 /* RecommendatedMovieCollectionViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,8 +81,8 @@
 		F19E00FE274F4F5700A03A83 /* MovieViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieViewCell.swift; sourceTree = "<group>"; };
 		F19E0100274FD78600A03A83 /* RecommendatedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendatedTableViewCell.swift; sourceTree = "<group>"; };
 		F19E0101274FD78600A03A83 /* RecommendatedTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecommendatedTableViewCell.xib; sourceTree = "<group>"; };
-		F19E0104274FD89800A03A83 /* MovieCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCollectionViewCell.swift; sourceTree = "<group>"; };
-		F19E0105274FD89800A03A83 /* MovieCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovieCollectionViewCell.xib; sourceTree = "<group>"; };
+		F19E0104274FD89800A03A83 /* RecommendatedMovieCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendatedMovieCollectionViewCell.swift; sourceTree = "<group>"; };
+		F19E0105274FD89800A03A83 /* RecommendatedMovieCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecommendatedMovieCollectionViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,8 +113,8 @@
 		F131B2A52750540B00D81126 /* CollectionViewCells */ = {
 			isa = PBXGroup;
 			children = (
-				F19E0104274FD89800A03A83 /* MovieCollectionViewCell.swift */,
-				F19E0105274FD89800A03A83 /* MovieCollectionViewCell.xib */,
+				F19E0104274FD89800A03A83 /* RecommendatedMovieCollectionViewCell.swift */,
+				F19E0105274FD89800A03A83 /* RecommendatedMovieCollectionViewCell.xib */,
 				F131B2A62750544900D81126 /* FavoriteMovieCollectionViewCell.swift */,
 				F131B2A72750544900D81126 /* FavoriteMovieCollectionViewCell.xib */,
 			);
@@ -358,7 +358,7 @@
 				F19E0103274FD78600A03A83 /* RecommendatedTableViewCell.xib in Resources */,
 				F131B2AE275058A500D81126 /* RatedMovieTableViewCell.xib in Resources */,
 				F19E00B7274E7BA600A03A83 /* Assets.xcassets in Resources */,
-				F19E0107274FD89800A03A83 /* MovieCollectionViewCell.xib in Resources */,
+				F19E0107274FD89800A03A83 /* RecommendatedMovieCollectionViewCell.xib in Resources */,
 				F131B2A3275053A100D81126 /* FavoriteMovieTableViewCell.xib in Resources */,
 				F131B2A92750544900D81126 /* FavoriteMovieCollectionViewCell.xib in Resources */,
 			);
@@ -398,7 +398,7 @@
 				F19E00B5274E7BA400A03A83 /* GNetTest.xcdatamodeld in Sources */,
 				F131B2AD275058A500D81126 /* RatedMovieTableViewCell.swift in Sources */,
 				F19E00E8274EECED00A03A83 /* MoviesManager.swift in Sources */,
-				F19E0106274FD89800A03A83 /* MovieCollectionViewCell.swift in Sources */,
+				F19E0106274FD89800A03A83 /* RecommendatedMovieCollectionViewCell.swift in Sources */,
 				F19E0102274FD78600A03A83 /* RecommendatedTableViewCell.swift in Sources */,
 				F19E00EF274F090B00A03A83 /* HeaderCollectionView.swift in Sources */,
 			);
