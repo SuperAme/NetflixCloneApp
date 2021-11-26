@@ -53,10 +53,17 @@ class MainViewController: UIViewController {
                 homeTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
             ])
         } else {
-            print("Youre not connected")
-        }
+            
+            let alert = UIAlertController(title: "Sorry", message: "No internet", preferredStyle: .alert)
+            
+            let okAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default) {
+                    UIAlertAction in
+                    exit(-1)
+                }
+            alert.addAction(okAction)
+            self.present(alert, animated: true, completion: nil)        }
     }
-
+    
 }
 
 extension MainViewController: UITableViewDelegate, UITableViewDataSource, MainViewDidSelectActionDelegate {
