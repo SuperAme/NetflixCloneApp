@@ -34,7 +34,7 @@ class RecommendatedTableViewCell: UITableViewCell {
         collectionView.dataSource = self
         favoriteMovies.parseRecommendatedMoviesJson { (data) in
             for i in data.results {
-                self.recommendatedMoviesData.append([i.title ?? Constants.noTitle, i.overview ?? Constants.noOverview, i.poster ?? Constants.noPoster, i.firstAirDate ?? Constants.noDate])
+                self.recommendatedMoviesData.append([i.title ?? Constants.noTitle, i.overview ?? Constants.noOverview, i.poster ?? Constants.noPoster, i.releaseDate ?? Constants.noDate])
             }
             DispatchQueue.main.async {
                 self.collectionView.reloadData()
