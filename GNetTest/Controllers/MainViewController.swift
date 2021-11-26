@@ -13,7 +13,6 @@ protocol MainViewDidSelectActionDelegate: class {
 
 class MainViewController: UIViewController {
     
-    let favoriteMovies = MoviesManager()
     weak var mainViewDidSelectActionDelegate: MainViewDidSelectActionDelegate?
     
     let homeTableView: UITableView = {
@@ -41,14 +40,21 @@ class MainViewController: UIViewController {
     }
     
     func setup() {
-        view.addSubview(homeTableView)
+        
         title = "Gonet Test App"
-        NSLayoutConstraint.activate([
-            homeTableView.topAnchor.constraint(equalTo: view.topAnchor),
-            homeTableView.leftAnchor.constraint(equalTo: view.leftAnchor),
-            homeTableView.rightAnchor.constraint(equalTo: view.rightAnchor),
-            homeTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
-        ])
+        
+        if NetworkMonitor.shared.isConnected {
+            let favoriteMovies = MoviesManager()
+            view.addSubview(homeTableView)
+            NSLayoutConstraint.activate([
+                homeTableView.topAnchor.constraint(equalTo: view.topAnchor),
+                homeTableView.leftAnchor.constraint(equalTo: view.leftAnchor),
+                homeTableView.rightAnchor.constraint(equalTo: view.rightAnchor),
+                homeTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+            ])
+        } else {
+            print("Youre not connected")
+        }
     }
 
 }

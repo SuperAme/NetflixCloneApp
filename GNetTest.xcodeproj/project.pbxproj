@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F117B7DB2751714F00CD1F1A /* NetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F117B7DA2751714F00CD1F1A /* NetworkMonitor.swift */; };
 		F131B2A2275053A100D81126 /* FavoriteMovieTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F131B2A0275053A100D81126 /* FavoriteMovieTableViewCell.swift */; };
 		F131B2AD275058A500D81126 /* RatedMovieTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F131B2AB275058A500D81126 /* RatedMovieTableViewCell.swift */; };
 		F131B2B52750AABD00D81126 /* RecommendatedTvShowTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F131B2B32750AABD00D81126 /* RecommendatedTvShowTableViewCell.swift */; };
@@ -48,6 +49,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F117B7DA2751714F00CD1F1A /* NetworkMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitor.swift; sourceTree = "<group>"; };
 		F131B2A0275053A100D81126 /* FavoriteMovieTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteMovieTableViewCell.swift; sourceTree = "<group>"; };
 		F131B2AB275058A500D81126 /* RatedMovieTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatedMovieTableViewCell.swift; sourceTree = "<group>"; };
 		F131B2B32750AABD00D81126 /* RecommendatedTvShowTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendatedTvShowTableViewCell.swift; sourceTree = "<group>"; };
@@ -181,6 +183,7 @@
 			children = (
 				F19E00AE274E7BA400A03A83 /* MainViewController.swift */,
 				F1BCA7812751388300BBC67C /* DetailMovieViewController.swift */,
+				F117B7DA2751714F00CD1F1A /* NetworkMonitor.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -366,6 +369,7 @@
 				F131B2B52750AABD00D81126 /* RecommendatedTvShowTableViewCell.swift in Sources */,
 				F131B2C42750B41000D81126 /* RatedTvShowTableViewCell.swift in Sources */,
 				F19E00AB274E7BA400A03A83 /* AppDelegate.swift in Sources */,
+				F117B7DB2751714F00CD1F1A /* NetworkMonitor.swift in Sources */,
 				F19E00AD274E7BA400A03A83 /* SceneDelegate.swift in Sources */,
 				F19E00B5274E7BA400A03A83 /* GNetTest.xcdatamodeld in Sources */,
 				F131B2AD275058A500D81126 /* RatedMovieTableViewCell.swift in Sources */,
