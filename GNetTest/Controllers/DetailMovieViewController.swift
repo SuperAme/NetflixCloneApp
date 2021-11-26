@@ -9,7 +9,7 @@ import UIKit
 
 class DetailMovieViewController: UIViewController {
     
-    lazy var nameLabel: UILabel = {
+    var nameLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Dummy text"
@@ -24,7 +24,7 @@ class DetailMovieViewController: UIViewController {
         return theImageView
     }()
     
-    lazy var descriptionLabel: UILabel = {
+    var descriptionLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = "Dummy text"
@@ -37,7 +37,7 @@ class DetailMovieViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
-        view.backgroundColor = .white
+        view.backgroundColor = #colorLiteral(red: 0.01176470588, green: 0.1450980392, blue: 0.2549019608, alpha: 1)
     }
     
     func setup() {
