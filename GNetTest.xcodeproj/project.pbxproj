@@ -24,8 +24,6 @@
 		F19E00E2274EDC7600A03A83 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19E00E1274EDC7600A03A83 /* Constants.swift */; };
 		F19E00E6274EDCCA00A03A83 /* MoviesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19E00E5274EDCCA00A03A83 /* MoviesModel.swift */; };
 		F19E00E8274EECED00A03A83 /* MoviesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19E00E7274EECED00A03A83 /* MoviesManager.swift */; };
-		F19E00EB274F067C00A03A83 /* CollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19E00EA274F067C00A03A83 /* CollectionViewDataSource.swift */; };
-		F19E00ED274F07D600A03A83 /* DbData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19E00EC274F07D600A03A83 /* DbData.swift */; };
 		F19E0102274FD78600A03A83 /* RecommendatedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19E0100274FD78600A03A83 /* RecommendatedTableViewCell.swift */; };
 		F19E0106274FD89800A03A83 /* MovieCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19E0104274FD89800A03A83 /* MovieCollectionViewCell.swift */; };
 		F19E0107274FD89800A03A83 /* MovieCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F19E0105274FD89800A03A83 /* MovieCollectionViewCell.xib */; };
@@ -70,8 +68,6 @@
 		F19E00E1274EDC7600A03A83 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		F19E00E5274EDCCA00A03A83 /* MoviesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesModel.swift; sourceTree = "<group>"; };
 		F19E00E7274EECED00A03A83 /* MoviesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesManager.swift; sourceTree = "<group>"; };
-		F19E00EA274F067C00A03A83 /* CollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewDataSource.swift; sourceTree = "<group>"; };
-		F19E00EC274F07D600A03A83 /* DbData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbData.swift; sourceTree = "<group>"; };
 		F19E0100274FD78600A03A83 /* RecommendatedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendatedTableViewCell.swift; sourceTree = "<group>"; };
 		F19E0104274FD89800A03A83 /* MovieCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCollectionViewCell.swift; sourceTree = "<group>"; };
 		F19E0105274FD89800A03A83 /* MovieCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovieCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -147,7 +143,6 @@
 		F19E00A9274E7BA400A03A83 /* GNetTest */ = {
 			isa = PBXGroup;
 			children = (
-				F19E00E9274F065A00A03A83 /* DataSource */,
 				F19E00E4274EDCA000A03A83 /* Models */,
 				F19E00E3274EDC9600A03A83 /* Networking */,
 				F19E00E0274EDC5E00A03A83 /* Helpers */,
@@ -225,17 +220,8 @@
 			isa = PBXGroup;
 			children = (
 				F19E00E5274EDCCA00A03A83 /* MoviesModel.swift */,
-				F19E00EC274F07D600A03A83 /* DbData.swift */,
 			);
 			path = Models;
-			sourceTree = "<group>";
-		};
-		F19E00E9274F065A00A03A83 /* DataSource */ = {
-			isa = PBXGroup;
-			children = (
-				F19E00EA274F067C00A03A83 /* CollectionViewDataSource.swift */,
-			);
-			path = DataSource;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -369,13 +355,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F19E00ED274F07D600A03A83 /* DbData.swift in Sources */,
 				F131B2C22750B2C700D81126 /* FavoriteTvShowTableViewCell.swift in Sources */,
 				F19E00E2274EDC7600A03A83 /* Constants.swift in Sources */,
 				F131B2A2275053A100D81126 /* FavoriteMovieTableViewCell.swift in Sources */,
 				F19E00AF274E7BA400A03A83 /* MainViewController.swift in Sources */,
 				F19E00E6274EDCCA00A03A83 /* MoviesModel.swift in Sources */,
-				F19E00EB274F067C00A03A83 /* CollectionViewDataSource.swift in Sources */,
 				F131B2B52750AABD00D81126 /* RecommendatedTvShowTableViewCell.swift in Sources */,
 				F131B2C42750B41000D81126 /* RatedTvShowTableViewCell.swift in Sources */,
 				F19E00AB274E7BA400A03A83 /* AppDelegate.swift in Sources */,

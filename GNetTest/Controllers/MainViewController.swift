@@ -19,12 +19,12 @@ class MainViewController: UIViewController {
         tableView.register(RecommendatedTvShowTableViewCell.self, forCellReuseIdentifier: RecommendatedTvShowTableViewCell.identifier)
         tableView.register(FavoriteTvShowTableViewCell.self, forCellReuseIdentifier: FavoriteTvShowTableViewCell.identifier)
         tableView.register(RatedTvShowTableViewCell.self, forCellReuseIdentifier: RatedTvShowTableViewCell.identifier)
+        tableView.backgroundColor = #colorLiteral(red: 0.0005455724895, green: 0.1969489455, blue: 0.3238928914, alpha: 1)
         return tableView
     }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
         homeTableView.delegate = self
         homeTableView.dataSource = self
         setup()
@@ -45,21 +45,6 @@ class MainViewController: UIViewController {
             homeTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
     }
-    
-    func getMoviesData() {
-//
-//        favoriteMovies.parseRatedTvShowsJson { (data) in
-//            for i in data.results {
-//                ratedTvShowsData.append([i.tvShowTitle ?? "No title", i.overview ?? "No overview", i.poster ?? "No poster", i.firstAirDate ?? "No release Date"])
-//            }
-//            print(self.ratedTvShowsData)
-//        }
-//
-        
-        
-    }
-    
-
 
 }
 

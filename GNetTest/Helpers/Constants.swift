@@ -9,11 +9,6 @@ import Foundation
 
 struct Constants {
     
-    
-    
-    //Recommendated tv show
-    //https://api.themoviedb.org/3/tv/78191/recommendations?api_key=a9e48791899314569ffacc427ec23393&language=en-US&page=1
-    
     static let account = "account/"
     static let accountId = "10424085"
     static let apiKey = "?api_key=a9e48791899314569ffacc427ec23393"

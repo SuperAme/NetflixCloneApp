@@ -30,15 +30,3 @@ struct Results: Decodable {
     let firstAirDate: String?
 }
 
-struct Model {
-    let title: String
-    let imageUrl: String
-    let date: String
-    
-    init(title:String, imageUrl: String, date: String) {
-        self.title = title
-        self.date = date
-        self.imageUrl = imageUrl
-    }
-}
-
