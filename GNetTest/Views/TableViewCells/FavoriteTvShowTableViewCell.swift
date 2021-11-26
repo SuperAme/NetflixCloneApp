@@ -21,6 +21,7 @@ class FavoriteTvShowTableViewCell: UITableViewCell {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         let nib = UINib(nibName: MovieCollectionViewCell.identifier, bundle: nil)
         collectionView.register(nib, forCellWithReuseIdentifier: MovieCollectionViewCell.identifier)
+        collectionView.backgroundColor = #colorLiteral(red: 0.01176470588, green: 0.1450980392, blue: 0.2549019608, alpha: 1)
         return collectionView
     }()
     

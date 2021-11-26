@@ -19,7 +19,7 @@ class MainViewController: UIViewController {
         tableView.register(RecommendatedTvShowTableViewCell.self, forCellReuseIdentifier: RecommendatedTvShowTableViewCell.identifier)
         tableView.register(FavoriteTvShowTableViewCell.self, forCellReuseIdentifier: FavoriteTvShowTableViewCell.identifier)
         tableView.register(RatedTvShowTableViewCell.self, forCellReuseIdentifier: RatedTvShowTableViewCell.identifier)
-        tableView.backgroundColor = #colorLiteral(red: 0.0005455724895, green: 0.1969489455, blue: 0.3238928914, alpha: 1)
+        tableView.backgroundColor = #colorLiteral(red: 0.01176470588, green: 0.1450980392, blue: 0.2549019608, alpha: 1)
         return tableView
     }()
     
@@ -37,7 +37,7 @@ class MainViewController: UIViewController {
     
     func setup() {
         view.addSubview(homeTableView)
-        
+        title = "Gonet Test App"
         NSLayoutConstraint.activate([
             homeTableView.topAnchor.constraint(equalTo: view.topAnchor),
             homeTableView.leftAnchor.constraint(equalTo: view.leftAnchor),
@@ -108,25 +108,50 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         return 40
     }
     
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        let sectionName: String
+//    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+//        let sectionName: String
+//        switch (section) {
+//        case 0:
+//            sectionName = "Favorite Movies"
+//        case 1:
+//            sectionName = "Recommendated Movies"
+//        case 2:
+//            sectionName = "Rated Movies"
+//        case 3:
+//            sectionName = "Recommendated TV Shows"
+//        case 4:
+//            sectionName = "Favorite TV Shows"
+//        case 5:
+//            sectionName = "Rated TV Shows"
+//        default:
+//            sectionName = "Unknow Category"
+//        }
+//        return sectionName
+//    }
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let label = UILabel()
+        label.backgroundColor = #colorLiteral(red: 0.01176470588, green: 0.1450980392, blue: 0.2549019608, alpha: 1)
+        label.textColor = .white
+        label.font = UIFont.boldSystemFont(ofSize: 16.0)
         switch (section) {
         case 0:
-            sectionName = "Favorite Movies"
+            label.text = "Favorite Movies"
         case 1:
-            sectionName = "Recommendated Movies"
+            label.text = "Recommendated Movies"
         case 2:
-            sectionName = "Rated Movies"
+            label.text = "Rated Movies"
         case 3:
-            sectionName = "Recommendated TV Shows"
+            label.text = "Recommendated TV Shows"
         case 4:
-            sectionName = "Favorite TV Shows"
+            label.text = "Favorite TV Shows"
         case 5:
-            sectionName = "Rated TV Shows"
+            label.text = "Rated TV Shows"
         default:
-            sectionName = "Unknow Category"
+            label.text = "Unknow Category"
         }
-        return sectionName
+        let headerView = UIView()
+        headerView.backgroundColor = .gray
+        return label
     }
 }
 
