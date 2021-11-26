@@ -9,26 +9,16 @@ import UIKit
 
 class MainViewController: UIViewController {
     
-    
-    var favoriteTvShowsData = [[String]]()
-    var recommendatedTvShowsData = [[String]]()
-    var ratedTvShowsData = [[String]]()
-    
     let favoriteMovies = MoviesManager()
-    
-    let titleLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Custom"
-        label.backgroundColor = .green
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
     
     let homeTableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped)
         tableView.register(RecommendatedTableViewCell.self, forCellReuseIdentifier: RecommendatedTableViewCell.identifier)
         tableView.register(FavoriteMovieTableViewCell.self, forCellReuseIdentifier: FavoriteMovieTableViewCell.identifier)
         tableView.register(RatedMovieTableViewCell.self, forCellReuseIdentifier: RatedMovieTableViewCell.identifier)
+        tableView.register(RecommendatedTvShowTableViewCell.self, forCellReuseIdentifier: RecommendatedTvShowTableViewCell.identifier)
+        tableView.register(FavoriteTvShowTableViewCell.self, forCellReuseIdentifier: FavoriteTvShowTableViewCell.identifier)
+        tableView.register(RatedTvShowTableViewCell.self, forCellReuseIdentifier: RatedTvShowTableViewCell.identifier)
         return tableView
     }()
     
@@ -38,7 +28,6 @@ class MainViewController: UIViewController {
         homeTableView.delegate = self
         homeTableView.dataSource = self
         setup()
-        
     }
     
     override func viewDidLayoutSubviews() {
@@ -58,21 +47,6 @@ class MainViewController: UIViewController {
     }
     
     func getMoviesData() {
-        
-//
-//        favoriteMovies.parseRatedMoviesJson { (data) in
-//            for i in data.results {
-//                ratedMoviesData.append([i.title ?? "No title", i.overview ?? "No overview", i.poster ?? "No poster", i.releaseDate ?? "No release Date"])
-//            }
-//            print(self.ratedMoviesData)
-//        }
-//
-//        favoriteMovies.parseFavoriteTvShowsJson { (data) in
-//            for i in data.results {
-//                favoriteTvShowsData.append([i.tvShowTitle ?? "No title", i.overview ?? "No overview", i.poster ?? "No poster", i.firstAirDate ?? "No release Date"])
-//            }
-//            print(self.favoriteTvShowsData)
-//        }
 //
 //        favoriteMovies.parseRatedTvShowsJson { (data) in
 //            for i in data.results {
@@ -81,12 +55,6 @@ class MainViewController: UIViewController {
 //            print(self.ratedTvShowsData)
 //        }
 //
-//        favoriteMovies.parseRecommendatedTvShowsJson { (data) in
-//            for i in data.results {
-//                recommendatedTvShowsData.append([i.tvShowTitle ?? "No title", i.overview ?? "No overview", i.poster ?? "No poster", i.firstAirDate ?? "No release Date"])
-//            }
-//            print(self.recommendatedTvShowsData)
-//        }
         
         
     }
@@ -123,6 +91,21 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
                 return UITableViewCell()
             }
             return cell
+        case 3:
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: RecommendatedTvShowTableViewCell.identifier, for: indexPath) as? RecommendatedTvShowTableViewCell else {
+                return UITableViewCell()
+            }
+            return cell
+        case 4:
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: FavoriteTvShowTableViewCell.identifier, for: indexPath) as? FavoriteTvShowTableViewCell else {
+                return UITableViewCell()
+            }
+            return cell
+        case 5:
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: RatedTvShowTableViewCell.identifier, for: indexPath) as? RatedTvShowTableViewCell else {
+                return UITableViewCell()
+            }
+            return cell
         default:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: RecommendatedTableViewCell.identifier, for: indexPath) as? RecommendatedTableViewCell else {
                 return UITableViewCell()
@@ -146,13 +129,13 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         case 0:
             sectionName = "Favorite Movies"
         case 1:
-            sectionName = "Recommendates Movies"
+            sectionName = "Recommendated Movies"
         case 2:
             sectionName = "Rated Movies"
         case 3:
-            sectionName = "Favorite TV Shows"
+            sectionName = "Recommendated TV Shows"
         case 4:
-            sectionName = "Recommendates TV Shows"
+            sectionName = "Favorite TV Shows"
         case 5:
             sectionName = "Rated TV Shows"
         default:

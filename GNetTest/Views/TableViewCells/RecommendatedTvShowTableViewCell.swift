@@ -1,5 +1,5 @@
 //
-//  RatedMovieTableViewCell.swift
+//  RecommendatedTvShowTableViewCell.swift
 //  GNetTest
 //
 //  Created by Americo Meneses Quintero on 25/11/21.
@@ -7,12 +7,12 @@
 
 import UIKit
 
-class RatedMovieTableViewCell: UITableViewCell {
+class RecommendatedTvShowTableViewCell: UITableViewCell {
 
-    var ratedMoviesData = [[String]]()
     let favoriteMovies = MoviesManager()
+    var recommendatedTvShowsData = [[String]]()
     
-    static let identifier = "RatedMovieTableViewCell"
+    static let identifier = "RecommendatedTvShowTableViewCell"
     
     private let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -23,21 +23,21 @@ class RatedMovieTableViewCell: UITableViewCell {
         collectionView.register(nib, forCellWithReuseIdentifier: MovieCollectionViewCell.identifier)
         return collectionView
     }()
-
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         contentView.backgroundColor = .systemPink
         contentView.addSubview(collectionView)
         collectionView.delegate = self
         collectionView.dataSource = self
-        favoriteMovies.parseRatedMoviesJson { (data) in
-           for i in data.results {
-               self.ratedMoviesData.append([i.title ?? "No title", i.overview ?? "No title", i.poster ?? "No poster", i.releaseDate ?? "No release Date"])
-           }
+        favoriteMovies.parseRecommendatedTvShowsJson { (data) in
+            for i in data.results {
+                self.recommendatedTvShowsData.append([i.title ?? "No title", i.overview ?? "No overview", i.poster ?? "No poster", i.firstAirDate ?? "No release Date"])
+            }
             DispatchQueue.main.async {
                 self.collectionView.reloadData()
             }
-       }
+        }
     }
     
     required init?(coder: NSCoder) {
@@ -51,15 +51,15 @@ class RatedMovieTableViewCell: UITableViewCell {
     
 }
 
-extension RatedMovieTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource {
+extension RecommendatedTvShowTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MovieCollectionViewCell.identifier, for: indexPath) as? MovieCollectionViewCell else {
             return UICollectionViewCell()
         }
-        cell.titleLabel.text = ratedMoviesData[indexPath.row][0]
-        cell.dateLabel.text = ratedMoviesData[indexPath.row][3]
-        if let url = URL(string: "\(Constants.imageURL)\(ratedMoviesData[indexPath.row][2])" ?? "") {
+        cell.titleLabel.text = recommendatedTvShowsData[indexPath.row][1]
+        cell.dateLabel.text = recommendatedTvShowsData[indexPath.row][3]
+        if let url = URL(string: "\(Constants.imageURL)\(recommendatedTvShowsData[indexPath.row][2])" ?? "") {
             
             if let data = try? Data(contentsOf: url) {
                 DispatchQueue.main.async {
@@ -72,8 +72,7 @@ extension RatedMovieTableViewCell: UICollectionViewDelegate, UICollectionViewDat
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return ratedMoviesData.count
+        return recommendatedTvShowsData.count
     }
-
 }
 

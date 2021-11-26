@@ -19,8 +19,8 @@ class RecommendatedTableViewCell: UITableViewCell {
         layout.itemSize = CGSize(width: 140, height: 300)
         layout.scrollDirection = .horizontal
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        let nib = UINib(nibName: RecommendatedMovieCollectionViewCell.identifier, bundle: nil)
-        collectionView.register(nib, forCellWithReuseIdentifier: RecommendatedMovieCollectionViewCell.identifier)
+        let nib = UINib(nibName: MovieCollectionViewCell.identifier, bundle: nil)
+        collectionView.register(nib, forCellWithReuseIdentifier: MovieCollectionViewCell.identifier)
         return collectionView
     }()
     
@@ -54,7 +54,7 @@ class RecommendatedTableViewCell: UITableViewCell {
 extension RecommendatedTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RecommendatedMovieCollectionViewCell.identifier, for: indexPath) as? RecommendatedMovieCollectionViewCell else {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MovieCollectionViewCell.identifier, for: indexPath) as? MovieCollectionViewCell else {
             return UICollectionViewCell()
         }
         cell.titleLabel.text = recommendatedMoviesData[indexPath.row][1]

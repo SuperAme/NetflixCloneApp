@@ -19,8 +19,8 @@ class FavoriteMovieTableViewCell: UITableViewCell {
         layout.itemSize = CGSize(width: 140, height: 300)
         layout.scrollDirection = .horizontal
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        let nib = UINib(nibName: FavoriteMovieCollectionViewCell.identifier, bundle: nil)
-        collectionView.register(nib, forCellWithReuseIdentifier: FavoriteMovieCollectionViewCell.identifier)
+        let nib = UINib(nibName: MovieCollectionViewCell.identifier, bundle: nil)
+        collectionView.register(nib, forCellWithReuseIdentifier: MovieCollectionViewCell.identifier)
         return collectionView
     }()
     
@@ -54,7 +54,7 @@ class FavoriteMovieTableViewCell: UITableViewCell {
 extension FavoriteMovieTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FavoriteMovieCollectionViewCell.identifier, for: indexPath) as? FavoriteMovieCollectionViewCell else {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MovieCollectionViewCell.identifier, for: indexPath) as? MovieCollectionViewCell else {
             return UICollectionViewCell()
         }
         cell.titleLabel.text = favoriteMoviesData[indexPath.row][0]
