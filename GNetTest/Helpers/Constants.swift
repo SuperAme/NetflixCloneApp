@@ -30,5 +30,25 @@ struct Constants {
     static let favoriteTvShowsUrl = baseURL + account + accountId + favoriteTvShow + apiKey + language + sorted + pageNumber + sessionId
     static let ratedTvShowsUrl = baseURL + account + accountId + ratedTvShow + apiKey + language + sorted + pageNumber + sessionId
     static let recommendatedTvShowsUrl = baseURL + tvShowRecommendations + apiKey + language + pageNumber
-    
+    static let alertTitle = "Sorry"
+    static let alertMessage = "No internet"
+    static let alertActionTitle = "Ok"
+    static let favoriteMoviesHeader = "Favorite Movies"
+    static let recommendatedMoviesHeader = "Recommendated Movies"
+    static let ratedMoviesHeader = "Rated Movies"
+    static let recommendatedTvShowHeader = "Recommendated TV Shows"
+    static let favoriteTvShowHeader = "Favorite TV Shows"
+    static let ratedTvShowHeader = "Rated TV Shows"
+    static let unknowCategory = "Unknow Category"
+    static let movieCollectionViewCellIdentifier = "MovieCollectionViewCell"
+    static let recommendatedTableViewCellIdentifier = "RecommendatedTableViewCell"
+    static let favoriteMovieTableViewCell = "FavoriteMovieTableViewCell"
+    static let ratedMovieTableViewCell = "RatedMovieTableViewCell"
+    static let recommendatedTvShowTableViewCell = "RecommendatedTvShowTableViewCell"
+    static let favoriteTvShowTableViewCell = "FavoriteTvShowTableViewCell"
+    static let ratedTvShowTableViewCell = "RatedTvShowTableViewCell"
+    static let noTitle = "No title"
+    static let noOverview = "No overview"
+    static let noPoster = "No poster"
+    static let noDate = "No release Date"
 }

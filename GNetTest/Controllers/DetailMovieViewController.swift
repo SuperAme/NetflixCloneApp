@@ -12,7 +12,6 @@ class DetailMovieViewController: UIViewController {
     var nameLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Dummy text"
         label.textAlignment = .center
         return label
     }()
@@ -27,7 +26,6 @@ class DetailMovieViewController: UIViewController {
     var descriptionLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Dummy text"
         label.font = label.font.withSize(14)
         label.numberOfLines = 20
         return label

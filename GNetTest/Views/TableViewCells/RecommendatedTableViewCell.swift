@@ -13,7 +13,7 @@ class RecommendatedTableViewCell: UITableViewCell {
     var recommendatedMoviesData = [[String]]()
     var myClousure: (([String]) -> Void)?
     
-    static let identifier = "RecommendatedTableViewCell"
+    static let identifier = Constants.recommendatedTableViewCellIdentifier
     
     private let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -34,7 +34,7 @@ class RecommendatedTableViewCell: UITableViewCell {
         collectionView.dataSource = self
         favoriteMovies.parseRecommendatedMoviesJson { (data) in
             for i in data.results {
-                self.recommendatedMoviesData.append([i.title ?? "No title", i.overview ?? "No overview", i.poster ?? "No poster", i.releaseDate ?? "No release Date"])
+                self.recommendatedMoviesData.append([i.title ?? Constants.noTitle, i.overview ?? Constants.noOverview, i.poster ?? Constants.noPoster, i.firstAirDate ?? Constants.noDate])
             }
             DispatchQueue.main.async {
                 self.collectionView.reloadData()

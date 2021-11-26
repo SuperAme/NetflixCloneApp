@@ -13,10 +13,10 @@ class MovieCollectionViewCell: UICollectionViewCell {
     @IBOutlet var dateLabel: UILabel!
     @IBOutlet var movieImage: UIImageView!
     
-    static let identifier = "MovieCollectionViewCell"
+    static let identifier = Constants.movieCollectionViewCellIdentifier
     
     static func nib() -> UINib {
-        return UINib(nibName: "MovieCollectionViewCell", bundle: nil)
+        return UINib(nibName: Constants.movieCollectionViewCellIdentifier, bundle: nil)
     }
 
     override func awakeFromNib() {

@@ -13,7 +13,7 @@ class FavoriteTvShowTableViewCell: UITableViewCell {
     var favoriteTvShowsData = [[String]]()
     var myClousure: (([String]) -> Void)?
     
-    static let identifier = "FavoriteTvShowTableViewCell"
+    static let identifier = Constants.favoriteTvShowTableViewCell
 
     private let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -34,7 +34,7 @@ class FavoriteTvShowTableViewCell: UITableViewCell {
         collectionView.dataSource = self
         favoriteMovies.parseFavoriteTvShowsJson { (data) in
             for i in data.results {
-                self.favoriteTvShowsData.append([i.tvShowTitle ?? "No title", i.overview ?? "No overview", i.poster ?? "No poster", i.firstAirDate ?? "No release Date"])
+                self.favoriteTvShowsData.append([i.tvShowTitle ?? Constants.noTitle, i.overview ?? Constants.noOverview, i.poster ?? Constants.noPoster, i.firstAirDate ?? Constants.noDate])
             }
             DispatchQueue.main.async {
                 self.collectionView.reloadData()

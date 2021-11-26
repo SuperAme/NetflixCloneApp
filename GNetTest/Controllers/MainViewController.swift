@@ -42,7 +42,7 @@ class MainViewController: UIViewController {
     func setup() {
         
         title = "Gonet Test App"
-        
+        //Check Network
         if NetworkMonitor.shared.isConnected {
             let favoriteMovies = MoviesManager()
             view.addSubview(homeTableView)
@@ -54,9 +54,9 @@ class MainViewController: UIViewController {
             ])
         } else {
             
-            let alert = UIAlertController(title: "Sorry", message: "No internet", preferredStyle: .alert)
+            let alert = UIAlertController(title: Constants.alertTitle, message: Constants.alertMessage, preferredStyle: .alert)
             
-            let okAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default) {
+            let okAction = UIAlertAction(title: Constants.alertActionTitle, style: UIAlertAction.Style.default) {
                     UIAlertAction in
                     exit(-1)
                 }
@@ -223,19 +223,19 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource, MainVi
         label.font = UIFont.boldSystemFont(ofSize: 16.0)
         switch (section) {
         case 0:
-            label.text = "Favorite Movies"
+            label.text = Constants.favoriteMoviesHeader
         case 1:
-            label.text = "Recommendated Movies"
+            label.text = Constants.recommendatedMoviesHeader
         case 2:
-            label.text = "Rated Movies"
+            label.text = Constants.ratedMoviesHeader
         case 3:
-            label.text = "Recommendated TV Shows"
+            label.text = Constants.recommendatedTvShowHeader
         case 4:
-            label.text = "Favorite TV Shows"
+            label.text = Constants.favoriteTvShowHeader
         case 5:
-            label.text = "Rated TV Shows"
+            label.text = Constants.ratedTvShowHeader
         default:
-            label.text = "Unknow Category"
+            label.text = Constants.unknowCategory
         }
         let headerView = UIView()
         headerView.backgroundColor = .gray

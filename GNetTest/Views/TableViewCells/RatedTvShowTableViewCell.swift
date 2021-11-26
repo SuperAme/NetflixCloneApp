@@ -13,7 +13,7 @@ class RatedTvShowTableViewCell: UITableViewCell {
     var ratedTvShowsData = [[String]]()
     var myClousure: (([String]) -> Void)?
     
-    static let identifier = "RatedTvShowTableViewCell"
+    static let identifier = Constants.ratedTvShowTableViewCell
 
     private let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -34,7 +34,7 @@ class RatedTvShowTableViewCell: UITableViewCell {
         collectionView.dataSource = self
         favoriteMovies.parseRatedTvShowsJson { (data) in
             for i in data.results {
-                self.ratedTvShowsData.append([i.tvShowTitle ?? "No title", i.overview ?? "No overview", i.poster ?? "No poster", i.firstAirDate ?? "No release Date"])
+                self.ratedTvShowsData.append([i.tvShowTitle ?? Constants.noTitle, i.overview ?? Constants.noOverview, i.poster ?? Constants.noPoster, i.firstAirDate ?? Constants.noDate])
             }
             DispatchQueue.main.async {
                 self.collectionView.reloadData()
