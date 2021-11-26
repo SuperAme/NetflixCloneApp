@@ -9,7 +9,7 @@ import UIKit
 
 class MainViewController: UIViewController {
     
-    var ratedMoviesData = [[String]]()
+    
     var favoriteTvShowsData = [[String]]()
     var recommendatedTvShowsData = [[String]]()
     var ratedTvShowsData = [[String]]()
@@ -28,6 +28,7 @@ class MainViewController: UIViewController {
         let tableView = UITableView(frame: .zero, style: .grouped)
         tableView.register(RecommendatedTableViewCell.self, forCellReuseIdentifier: RecommendatedTableViewCell.identifier)
         tableView.register(FavoriteMovieTableViewCell.self, forCellReuseIdentifier: FavoriteMovieTableViewCell.identifier)
+        tableView.register(RatedMovieTableViewCell.self, forCellReuseIdentifier: RatedMovieTableViewCell.identifier)
         return tableView
     }()
     
@@ -109,6 +110,16 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         switch indexPath.section {
         case 0:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: FavoriteMovieTableViewCell.identifier, for: indexPath) as? FavoriteMovieTableViewCell else {
+                return UITableViewCell()
+            }
+            return cell
+        case 1:
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: RecommendatedTableViewCell.identifier, for: indexPath) as? RecommendatedTableViewCell else {
+                return UITableViewCell()
+            }
+            return cell
+        case 2:
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: RatedMovieTableViewCell.identifier, for: indexPath) as? RatedMovieTableViewCell else {
                 return UITableViewCell()
             }
             return cell
