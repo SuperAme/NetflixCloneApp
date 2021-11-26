@@ -23,11 +23,5 @@ class MovieCollectionViewCell: UICollectionViewCell {
         super.awakeFromNib()
         // Initialization code
     }
-    
-    public func showMovie(with movie: Movie?) {
-        self.titleLabel.text = movie?.name
-        self.dateLabel.text = movie?.date
-        
-    }
 
 }

@@ -9,24 +9,14 @@ import UIKit
 
 class MainViewController: UIViewController {
     
-    let data = [
-        ["mercedez","bmw","Nissan","Volksvawen"],
-        ["dog","cat"],
-        ["strawberry","lemon","orange"],
-        ["mercedez","bmw","Nissan","Volksvawen"],
-        ["dog","cat"],
-        ["strawberry","lemon","orange"]
-    ]
-        
-    
-    let favoriteMovies = MoviesManager()
-    
     var favoriteMoviesData = [[String]]()
     var recommendatedMoviesData = [[String]]()
     var ratedMoviesData = [[String]]()
     var favoriteTvShowsData = [[String]]()
     var recommendatedTvShowsData = [[String]]()
     var ratedTvShowsData = [[String]]()
+    
+    let favoriteMovies = MoviesManager()
     
     let titleLabel: UILabel = {
         let label = UILabel()
@@ -38,7 +28,8 @@ class MainViewController: UIViewController {
     
     let homeTableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped)
-        tableView.register(CollectionTableViewCell.self, forCellReuseIdentifier: CollectionTableViewCell.identifier)
+        tableView.register(RecommendatedTableViewCell.self, forCellReuseIdentifier: RecommendatedTableViewCell.identifier)
+        tableView.register(FavoriteMovieTableViewCell.self, forCellReuseIdentifier: FavoriteMovieTableViewCell.identifier)
         return tableView
     }()
     
@@ -48,6 +39,7 @@ class MainViewController: UIViewController {
         homeTableView.delegate = self
         homeTableView.dataSource = self
         setup()
+        
     }
     
     override func viewDidLayoutSubviews() {
@@ -67,47 +59,49 @@ class MainViewController: UIViewController {
     }
     
     func getMoviesData() {
-        favoriteMovies.parseFavoriteMoviesJson { (data) in
+        
+         favoriteMovies.parseFavoriteMoviesJson { (data) in
             for i in data.results {
                 self.favoriteMoviesData.append([i.title ?? "No title", i.overview ?? "No title", i.poster ?? "No poster", i.releaseDate ?? "No release Date"])
             }
-//            print(self.favoriteMoviesData)
+             
         }
         
-        favoriteMovies.parseRecommendatedMoviesJson { (data) in
-            for i in data.results {
-                self.recommendatedMoviesData.append([i.title ?? "No title", i.overview ?? "No overview", i.poster ?? "No poster", i.releaseDate ?? "No release Date"])
-            }
+        
+//        favoriteMovies.parseRecommendatedMoviesJson { (data) in
+//            for i in data.results {
+//                recommendatedMoviesData.append([i.title ?? "No title", i.overview ?? "No overview", i.poster ?? "No poster", i.releaseDate ?? "No release Date"])
+//            }
 //            print(self.recommendatedMoviesData)
-        }
-        
-        favoriteMovies.parseRatedMoviesJson { (data) in
-            for i in data.results {
-                self.ratedMoviesData.append([i.title ?? "No title", i.overview ?? "No overview", i.poster ?? "No poster", i.releaseDate ?? "No release Date"])
-            }
+//        }
+//
+//        favoriteMovies.parseRatedMoviesJson { (data) in
+//            for i in data.results {
+//                ratedMoviesData.append([i.title ?? "No title", i.overview ?? "No overview", i.poster ?? "No poster", i.releaseDate ?? "No release Date"])
+//            }
 //            print(self.ratedMoviesData)
-        }
-        
-        favoriteMovies.parseFavoriteTvShowsJson { (data) in
-            for i in data.results {
-                self.favoriteTvShowsData.append([i.tvShowTitle ?? "No title", i.overview ?? "No overview", i.poster ?? "No poster", i.firstAirDate ?? "No release Date"])
-            }
+//        }
+//
+//        favoriteMovies.parseFavoriteTvShowsJson { (data) in
+//            for i in data.results {
+//                favoriteTvShowsData.append([i.tvShowTitle ?? "No title", i.overview ?? "No overview", i.poster ?? "No poster", i.firstAirDate ?? "No release Date"])
+//            }
 //            print(self.favoriteTvShowsData)
-        }
-        
-        favoriteMovies.parseRatedTvShowsJson { (data) in
-            for i in data.results {
-                self.ratedTvShowsData.append([i.tvShowTitle ?? "No title", i.overview ?? "No overview", i.poster ?? "No poster", i.firstAirDate ?? "No release Date"])
-            }
+//        }
+//
+//        favoriteMovies.parseRatedTvShowsJson { (data) in
+//            for i in data.results {
+//                ratedTvShowsData.append([i.tvShowTitle ?? "No title", i.overview ?? "No overview", i.poster ?? "No poster", i.firstAirDate ?? "No release Date"])
+//            }
 //            print(self.ratedTvShowsData)
-        }
-        
-        favoriteMovies.parseRecommendatedTvShowsJson { (data) in
-            for i in data.results {
-                self.recommendatedTvShowsData.append([i.tvShowTitle ?? "No title", i.overview ?? "No overview", i.poster ?? "No poster", i.firstAirDate ?? "No release Date"])
-            }
+//        }
+//
+//        favoriteMovies.parseRecommendatedTvShowsJson { (data) in
+//            for i in data.results {
+//                recommendatedTvShowsData.append([i.tvShowTitle ?? "No title", i.overview ?? "No overview", i.poster ?? "No poster", i.firstAirDate ?? "No release Date"])
+//            }
 //            print(self.recommendatedTvShowsData)
-        }
+//        }
         
         
     }
@@ -119,7 +113,7 @@ class MainViewController: UIViewController {
 extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return data.count
+        return 6
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -127,15 +121,24 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: CollectionTableViewCell.identifier, for: indexPath) as? CollectionTableViewCell else {
-            return UITableViewCell()
+        
+        switch indexPath.section {
+        case 0:
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: FavoriteMovieTableViewCell.identifier, for: indexPath) as? FavoriteMovieTableViewCell else {
+                return UITableViewCell()
+            }
+            return cell
+        default:
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: RecommendatedTableViewCell.identifier, for: indexPath) as? RecommendatedTableViewCell else {
+                return UITableViewCell()
+            }
+            return cell
         }
         
-        return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 250
+        return 300
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {

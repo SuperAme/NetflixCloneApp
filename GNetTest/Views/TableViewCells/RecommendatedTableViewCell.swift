@@ -7,18 +7,9 @@
 
 import UIKit
 
-class CollectionTableViewCell: UITableViewCell {
+class RecommendatedTableViewCell: UITableViewCell {
     
     static let identifier = "CollectionTableViewCell"
-    
-    let data = [
-        ["mercedez","bmw","Nissan","Volksvawen"],
-        ["dog","cat"],
-        ["strawberry","lemon","orange"],
-        ["mercedez","bmw","Nissan","Volksvawen"],
-        ["dog","cat"],
-        ["strawberry","lemon","orange"]
-    ]
     
     private let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -49,22 +40,18 @@ class CollectionTableViewCell: UITableViewCell {
     
 }
 
-extension CollectionTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource {
+extension RecommendatedTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-//        guard let cell = tableView.dequeueReusableCell(withIdentifier: CollectionTableViewCell.identifier, for: indexPath) as? CollectionTableViewCell else {
-//            return UITableViewCell()
-//        }
-//
-//        return cell
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MovieCollectionViewCell.identifier, for: indexPath) as? MovieCollectionViewCell else {
             return UICollectionViewCell()
         }
         cell.titleLabel.text = "titulo"
         return cell
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return data[section].count
+        return 3
     }
 }
