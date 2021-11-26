@@ -27,6 +27,7 @@
 		F19E0102274FD78600A03A83 /* RecommendatedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19E0100274FD78600A03A83 /* RecommendatedTableViewCell.swift */; };
 		F19E0106274FD89800A03A83 /* MovieCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19E0104274FD89800A03A83 /* MovieCollectionViewCell.swift */; };
 		F19E0107274FD89800A03A83 /* MovieCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F19E0105274FD89800A03A83 /* MovieCollectionViewCell.xib */; };
+		F1BCA7822751388300BBC67C /* DetailMovieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1BCA7812751388300BBC67C /* DetailMovieViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +72,7 @@
 		F19E0100274FD78600A03A83 /* RecommendatedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendatedTableViewCell.swift; sourceTree = "<group>"; };
 		F19E0104274FD89800A03A83 /* MovieCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCollectionViewCell.swift; sourceTree = "<group>"; };
 		F19E0105274FD89800A03A83 /* MovieCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovieCollectionViewCell.xib; sourceTree = "<group>"; };
+		F1BCA7812751388300BBC67C /* DetailMovieViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailMovieViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -178,6 +180,7 @@
 			isa = PBXGroup;
 			children = (
 				F19E00AE274E7BA400A03A83 /* MainViewController.swift */,
+				F1BCA7812751388300BBC67C /* DetailMovieViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -368,6 +371,7 @@
 				F131B2AD275058A500D81126 /* RatedMovieTableViewCell.swift in Sources */,
 				F19E00E8274EECED00A03A83 /* MoviesManager.swift in Sources */,
 				F19E0106274FD89800A03A83 /* MovieCollectionViewCell.swift in Sources */,
+				F1BCA7822751388300BBC67C /* DetailMovieViewController.swift in Sources */,
 				F19E0102274FD78600A03A83 /* RecommendatedTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

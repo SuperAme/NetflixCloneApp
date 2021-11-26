@@ -11,6 +11,7 @@ class RatedTvShowTableViewCell: UITableViewCell {
 
     let favoriteMovies = MoviesManager()
     var ratedTvShowsData = [[String]]()
+    var myClousure: (([String]) -> Void)?
     
     static let identifier = "RatedTvShowTableViewCell"
 
@@ -73,6 +74,10 @@ extension RatedTvShowTableViewCell: UICollectionViewDelegate, UICollectionViewDa
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return ratedTvShowsData.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        myClousure?([ratedTvShowsData[indexPath.row][0],ratedTvShowsData[indexPath.row][1],ratedTvShowsData[indexPath.row][2]])
     }
 }
 

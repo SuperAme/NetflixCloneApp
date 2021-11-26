@@ -11,6 +11,7 @@ class FavoriteMovieTableViewCell: UITableViewCell {
     
     let favoriteMovies = MoviesManager()
     var favoriteMoviesData = [[String]]()
+    var myClousure: (([String]) -> Void)?
     
     static let identifier = "FavoriteMovieTableViewCell"
     
@@ -74,6 +75,10 @@ extension FavoriteMovieTableViewCell: UICollectionViewDelegate, UICollectionView
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return favoriteMoviesData.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        myClousure?([favoriteMoviesData[indexPath.row][0],favoriteMoviesData[indexPath.row][1],favoriteMoviesData[indexPath.row][2]])
     }
 
 }

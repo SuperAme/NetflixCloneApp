@@ -7,9 +7,14 @@
 
 import UIKit
 
+protocol MainViewDidSelectActionDelegate: class {
+    func selectionAction(data: [String], indexPath: IndexPath)
+}
+
 class MainViewController: UIViewController {
     
     let favoriteMovies = MoviesManager()
+    weak var mainViewDidSelectActionDelegate: MainViewDidSelectActionDelegate?
     
     let homeTableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped)
@@ -48,7 +53,11 @@ class MainViewController: UIViewController {
 
 }
 
-extension MainViewController: UITableViewDelegate, UITableViewDataSource {
+extension MainViewController: UITableViewDelegate, UITableViewDataSource, MainViewDidSelectActionDelegate {
+    func selectionAction(data: [String], indexPath: IndexPath) {
+        mainViewDidSelectActionDelegate?.selectionAction(data: data, indexPath: indexPath)
+    }
+    
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 6
@@ -60,35 +69,121 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
+        
+        
         switch indexPath.section {
         case 0:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: FavoriteMovieTableViewCell.identifier, for: indexPath) as? FavoriteMovieTableViewCell else {
                 return UITableViewCell()
+            }
+            cell.myClousure = { [weak self] (value) in
+                let vc = DetailMovieViewController()
+                if let url = URL(string: "\(Constants.imageURL)\(value[2])") {
+                    if let data = try? Data(contentsOf: url) {
+                        DispatchQueue.main.async {
+                            vc.movieImageView.image = UIImage(data: data)
+                        }
+                    }
+                }
+                
+                vc.nameLabel.text = value[0]
+                vc.descriptionLabel.text = value[1]
+                self?.navigationController?.pushViewController(vc, animated: true)
             }
             return cell
         case 1:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: RecommendatedTableViewCell.identifier, for: indexPath) as? RecommendatedTableViewCell else {
                 return UITableViewCell()
             }
+            cell.myClousure = { [weak self] (value) in
+                let vc = DetailMovieViewController()
+                if let url = URL(string: "\(Constants.imageURL)\(value[2])") {
+                    if let data = try? Data(contentsOf: url) {
+                        DispatchQueue.main.async {
+                            vc.movieImageView.image = UIImage(data: data)
+                        }
+                    }
+                }
+                
+                vc.nameLabel.text = value[0]
+                vc.descriptionLabel.text = value[1]
+                self?.navigationController?.pushViewController(vc, animated: true)
+            }
             return cell
         case 2:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: RatedMovieTableViewCell.identifier, for: indexPath) as? RatedMovieTableViewCell else {
                 return UITableViewCell()
+            }
+            cell.myClousure = { [weak self] (value) in
+                let vc = DetailMovieViewController()
+                if let url = URL(string: "\(Constants.imageURL)\(value[2])") {
+                    if let data = try? Data(contentsOf: url) {
+                        DispatchQueue.main.async {
+                            vc.movieImageView.image = UIImage(data: data)
+                        }
+                    }
+                }
+                
+                vc.nameLabel.text = value[0]
+                vc.descriptionLabel.text = value[1]
+                self?.navigationController?.pushViewController(vc, animated: true)
             }
             return cell
         case 3:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: RecommendatedTvShowTableViewCell.identifier, for: indexPath) as? RecommendatedTvShowTableViewCell else {
                 return UITableViewCell()
             }
+            cell.myClousure = { [weak self] (value) in
+                let vc = DetailMovieViewController()
+                if let url = URL(string: "\(Constants.imageURL)\(value[2])") {
+                    if let data = try? Data(contentsOf: url) {
+                        DispatchQueue.main.async {
+                            vc.movieImageView.image = UIImage(data: data)
+                        }
+                    }
+                }
+                
+                vc.nameLabel.text = value[0]
+                vc.descriptionLabel.text = value[1]
+                self?.navigationController?.pushViewController(vc, animated: true)
+            }
             return cell
         case 4:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: FavoriteTvShowTableViewCell.identifier, for: indexPath) as? FavoriteTvShowTableViewCell else {
                 return UITableViewCell()
             }
+            cell.myClousure = { [weak self] (value) in
+                let vc = DetailMovieViewController()
+                if let url = URL(string: "\(Constants.imageURL)\(value[2])") {
+                    if let data = try? Data(contentsOf: url) {
+                        DispatchQueue.main.async {
+                            vc.movieImageView.image = UIImage(data: data)
+                        }
+                    }
+                }
+                
+                vc.nameLabel.text = value[0]
+                vc.descriptionLabel.text = value[1]
+                self?.navigationController?.pushViewController(vc, animated: true)
+            }
             return cell
         case 5:
             guard let cell = tableView.dequeueReusableCell(withIdentifier: RatedTvShowTableViewCell.identifier, for: indexPath) as? RatedTvShowTableViewCell else {
                 return UITableViewCell()
+            }
+            cell.myClousure = { [weak self] (value) in
+                let vc = DetailMovieViewController()
+                if let url = URL(string: "\(Constants.imageURL)\(value[2])") {
+                    if let data = try? Data(contentsOf: url) {
+                        DispatchQueue.main.async {
+                            vc.movieImageView.image = UIImage(data: data)
+                        }
+                    }
+                }
+                
+                vc.nameLabel.text = value[0]
+                vc.descriptionLabel.text = value[1]
+                self?.navigationController?.pushViewController(vc, animated: true)
             }
             return cell
         default:
@@ -108,26 +203,6 @@ extension MainViewController: UITableViewDelegate, UITableViewDataSource {
         return 40
     }
     
-//    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-//        let sectionName: String
-//        switch (section) {
-//        case 0:
-//            sectionName = "Favorite Movies"
-//        case 1:
-//            sectionName = "Recommendated Movies"
-//        case 2:
-//            sectionName = "Rated Movies"
-//        case 3:
-//            sectionName = "Recommendated TV Shows"
-//        case 4:
-//            sectionName = "Favorite TV Shows"
-//        case 5:
-//            sectionName = "Rated TV Shows"
-//        default:
-//            sectionName = "Unknow Category"
-//        }
-//        return sectionName
-//    }
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let label = UILabel()
         label.backgroundColor = #colorLiteral(red: 0.01176470588, green: 0.1450980392, blue: 0.2549019608, alpha: 1)

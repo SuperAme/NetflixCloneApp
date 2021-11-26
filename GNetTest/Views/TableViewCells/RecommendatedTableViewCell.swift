@@ -11,6 +11,7 @@ class RecommendatedTableViewCell: UITableViewCell {
     
     let favoriteMovies = MoviesManager()
     var recommendatedMoviesData = [[String]]()
+    var myClousure: (([String]) -> Void)?
     
     static let identifier = "RecommendatedTableViewCell"
     
@@ -75,4 +76,9 @@ extension RecommendatedTableViewCell: UICollectionViewDelegate, UICollectionView
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return recommendatedMoviesData.count
     }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        myClousure?([recommendatedMoviesData[indexPath.row][0],recommendatedMoviesData[indexPath.row][1],recommendatedMoviesData[indexPath.row][2]])
+    }
 }
+
+
